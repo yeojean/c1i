@@ -1,0 +1,96 @@
+/* ===== Variables & base ===== */
+* { box-sizing: border-box; }
+:root{
+  --pink: #ff3aa1;
+  --bg:   #f6f6f6;
+  --radius: 18px;
+  --display: "Archivo Black", Arial, Helvetica, sans-serif; /* 디스플레이 폰트 */
+  --ui: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+}
+html, body { height: 100%; }
+body{
+  margin: 0;
+  background: var(--bg);
+  color: #222;
+  font-family: var(--ui);
+}
+
+/* ===== PAGE GRID (명확한 CSS Grid 사용 1) ===== */
+.page{
+  min-height: 100vh;
+  display: grid;
+  grid-template-rows: auto 1fr auto; /* header / main / footer */
+}
+
+.site-header{
+  padding: 22px 24px;
+  display: grid;
+  place-items: center;
+}
+.site-header h1{
+  margin: 0;
+  font-family: var(--display);
+  font-size: clamp(20px, 2.6vw, 32px);
+  letter-spacing: .02em;
+}
+
+/* ===== HERO 영역 ===== */
+.hero{
+  margin: 16px auto 28px;
+  width: min(980px, 92vw);
+  aspect-ratio: 16 / 10;
+  border-radius: var(--radius);
+  background: url("assets/bg.jpg") center/cover no-repeat;
+  position: relative;
+  overflow: hidden;
+
+  /* 내부 컨텐츠 정렬도 Grid */
+  display: grid;
+}
+
+/* ===== WORD OVERLAY GRID (명확한 CSS Grid 사용 2) ===== */
+.word-grid{
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  grid-auto-rows: minmax(84px, 1fr);
+  gap: 8px;
+  padding: 18px;
+  width: 100%;
+  height: 100%;
+}
+
+/* ===== WORD CELL ===== */
+.word{
+  display: grid;
+  place-items: center;
+  font-family: var(--display);
+  text-transform: lowercase;
+  text-decoration: none;
+  font-weight: 900;
+  font-size: clamp(18px, 4.2vw, 56px);
+  letter-spacing: .06em;
+
+  color: var(--pink);
+  opacity: .92;
+  mix-blend-mode: multiply;
+
+  /* 스텐실/거친 느낌 가짜로 주기 */
+  text-shadow:
+    0 0 1px rgba(0,0,0,.04),
+    0 0 6px rgba(255,58,161,.18);
+
+  transition: transform .18s ease, opacity .18s ease, text-shadow .18s ease;
+  border-radius: 8px;
+}
+.word:hover{
+  transform: scale(1.03);
+  opacity: 1;
+  text-decoration: underline;
+}
+.word:focus{
+  outline: 3px solid rgba(255,58,161,.55);
+  outline-offset: 2px;
+}
+
+/* footer (비워둬도 OK) */
+.site-footer{ min-height: 12px; }
