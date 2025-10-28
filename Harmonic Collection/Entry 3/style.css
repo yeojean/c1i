@@ -1,13 +1,101 @@
-p{
-    color:rgb(100, 100, 155);
-    font-size:20px;
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
-.magenta-paragraph{
-    color:magenta;
+
+body {
+    background-color: #000000;
+    font-family: 'Inter', sans-serif;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
 }
-.magenta-paragraph a:hover{
-    color:cyan;
+
+.container {
+    text-align: center;
+    max-width: 800px;
+    width: 100%;
 }
-#music{
-    font-size:10px;
+
+h1 {
+    color: #ffffff;
+    font-size: 4em;
+    font-weight: 900;
+    margin-bottom: 20px;
+    letter-spacing: 3px;
+}
+
+.mood {
+    color: #ffffff;
+    font-size: 2.5em;
+    font-weight: 600;
+    margin-bottom: 40px;
+    text-transform: lowercase;
+    letter-spacing: 1px;
+}
+
+.sad-link {
+    color: #ffffff;
+    text-decoration: underline;
+    transition: all 0.3s ease;
+}
+
+.sad-link:hover {
+    color: #cccccc;
+    text-decoration: none;
+}
+
+.image-container {
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto;
+    position: relative;
+}
+
+img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border: 3px solid #ffffff;
+}
+
+.song-link {
+    margin-top: 40px;
+}
+
+.song-link a {
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 1.2em;
+    font-weight: 500;
+    padding: 12px 30px;
+    border: 2px solid #ffffff;
+    display: inline-block;
+    transition: all 0.3s ease;
+}
+
+.song-link a:hover {
+    background-color: #ffffff;
+    color: #000000;
+}
+
+@media (max-width: 768px) {
+    h1 {
+        font-size: 2.5em;
+    }
+
+    .mood {
+        font-size: 1.8em;
+    }
+
+    .song-link a {
+        font-size: 1em;
+        padding: 10px 20px;
+    }
 }
