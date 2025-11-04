@@ -6,17 +6,20 @@ body {
   text-align: center;
 }
 
-/* 상단 텍스트 */
-.top {
-  position: relative;
-  z-index: 3;              /* 오버레이보다 위 */
-  padding-top: 40px;
+.page {
+  text-align: center;
+  max-width: 900px;
+  width: 100%;
+  margin: 0 auto;
 }
+
 .week {
   font-size: 26px;
-  font-weight: 400;
-  margin: 0 0 25px 0;
+  font-weight: normal;
+  margin-top: 50px;
+  margin-bottom: 30px;
 }
+
 .feelings.column {
   display: flex;
   flex-direction: column;
@@ -27,23 +30,24 @@ body {
   margin-bottom: 35px;
 }
 
-/* hover 흔들림 */
 @keyframes jitter {
-  0%,100% { transform: translate(0,0) rotate(0deg); }
-  25% { transform: translate(1px,-1px) rotate(0.4deg); }
-  50% { transform: translate(-1px,1px) rotate(-0.4deg); }
-  75% { transform: translate(1px,1px) rotate(0.2deg); }
+  0%, 100% { transform: translate(0, 0) rotate(0deg); }
+  25% { transform: translate(1px, -1px) rotate(0.4deg); }
+  50% { transform: translate(-1px, 1px) rotate(-0.4deg); }
+  75% { transform: translate(1px, 1px) rotate(0.2deg); }
 }
+
 .hover-text:hover {
   animation: jitter 0.25s infinite;
 }
 
-/* 이미지 + 오버레이 */
+/* 이미지 */
 .photo {
   position: relative;
   width: min(700px, 80vw);
   margin: 0 auto 70px;
 }
+
 .photo img {
   width: 100%;
   height: auto;
@@ -55,37 +59,39 @@ body {
 .overlay {
   position: absolute;
   inset: 0;
-  background: #fff;
+  background: rgba(255, 255, 255, 0.97);
   border: 2px solid #000;
   display: grid;
   place-items: center;
   opacity: 0;
   pointer-events: none;
   transition: opacity 0.3s ease;
-  z-index: 2;
 }
+
 .overlay-inner {
   width: 80%;
   max-width: 560px;
   text-align: left;
 }
+
 .overlay-inner h2 {
   font-size: 24px;
-  margin: 0 0 12px 0;
+  margin-bottom: 12px;
 }
+
 .overlay-inner p {
   font-size: 18px;
   line-height: 1.55;
   margin: 0;
 }
 
-/* hover 시 전환 */
+/* hover 시 */
 .photo:hover img { opacity: 0; }
 .photo:hover .overlay {
   opacity: 1;
   pointer-events: auto;
 }
 
-/* 터치 지원용 */
+/* 모바일 클릭 토글용 */
 .photo.is-open img { opacity: 0; }
 .photo.is-open .overlay { opacity: 1; pointer-events: auto; }
