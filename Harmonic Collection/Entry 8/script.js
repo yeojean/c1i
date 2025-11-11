@@ -1,69 +1,130 @@
-// 별 배경
-(() => {
+/* 별 배경 */
+(()=>{
   const canvas = document.getElementById('stars');
-  const ctx = canvas.getContext('2d', { alpha: true });
-  let w=0, h=0, stars=[];
+  const ctx = canvas.getContext('2d',{alpha:true});
+  const DPR = Math.max(1, Math.min(2, window.devicePixelRatio||1));
+  let W=0,H=0,stars=[];
   function resize(){
-    w = innerWidth; h = innerHeight;
-    canvas.width = w; canvas.height = h;
-    const count = Math.floor(w*h*0.00018);
-    stars = Array.from({length:count},()=>({
-      x:Math.random()*w, y:Math.random()*h, r:Math.random()*1.5+0.3, s:Math.random()*0.7+0.2
+    W = canvas.width  = Math.floor(innerWidth  * DPR);
+    H = canvas.height = Math.floor(innerHeight * DPR);
+    canvas.style.width  = innerWidth+'px';
+    canvas.style.height = innerHeight+'px';
+    build();
+  }
+  function build(){
+    const n = Math.floor((W*H)/(14000*DPR));
+    stars = Array.from({length:n},()=>({
+      x:Math.random()*W, y:Math.random()*H, r:Math.random()*1.8+.3,
+      a:Math.random()*Math.PI*2, s:Math.random()*0.3+0.05
     }));
   }
-  function draw(){
-    ctx.clearRect(0,0,w,h);
-    ctx.fillStyle="#fff";
-    stars.forEach(st=>{
-      ctx.globalAlpha = 0.6 + Math.sin(Date.now()*0.002*st.s)*0.4;
-      ctx.beginPath();
-      ctx.arc(st.x, st.y, st.r, 0, Math.PI*2);
-      ctx.fill();
-    });
-    requestAnimationFrame(draw);
+  function tick(){
+    ctx.clearRect(0,0,W,H);
+    ctx.fillStyle='#fff';
+    for(const s of stars){
+      s.a += s.s*0.02;
+      const tw = (Math.sin(s.a)+1)/2;
+      ctx.globalAlpha = .3 + tw*.7;
+      ctx.beginPath(); ctx.arc(s.x,s.y,s.r*DPR,0,Math.PI*2); ctx.fill();
+    }
+    ctx.globalAlpha = 1;
+    requestAnimationFrame(tick);
   }
   addEventListener('resize', resize);
-  resize(); draw();
+  resize(); tick();
 })();
 
-// 라이트박스
-(() => {
-  const box=document.getElementById('lightbox');
-  const img=box.querySelector('img');
-  const closeBtn=box.querySelector('.close');
-  const open=src=>{if(!src)return;img.src=src;box.classList.add('open');};
-  const close=()=>{box.classList.remove('open');img.src='';};
-  document.querySelectorAll('.cat-sticker').forEach(b=>{
-    b.addEventListener('click',()=>{
-      if(b.dataset.dragging==='1'){b.dataset.dragging='0';return;}
-      const src=b.getAttribute('data-img');if(src)open(src);
+/* 스티커: hero 영역 안에서만 드래그 + 2개만 라이트박스 */
+(()=>{
+  const container = document.querySelector('.hero');
+  const stickers  = container.querySelectorAll('.sticker');
+  const lb = document.getElementById('lightbox');
+  const lbImg = lb.querySelector('.lightbox-img');
+  const lbClose = lb.querySelector('.close');
+
+  let drag=null, bounds=null;
+
+  stickers.forEach(el=>{
+    el.addEventListener('pointerdown', (e)=>{
+      bounds = container.getBoundingClientRect();
+      el.setPointerCapture(e.pointerId);
+      drag = {
+        el,
+        startX: e.clientX, startY: e.clientY,
+        ox: e.clientX - (bounds.left + el.offsetLeft),
+        oy: e.clientY - (bounds.top  + el.offsetTop)
+      };
+    });
+
+    el.addEventListener('pointermove', (e)=>{
+      if(!drag || drag.el!==el) return;
+      let x = e.clientX - bounds.left - drag.ox;
+      let y = e.clientY - bounds.top  - drag.oy;
+      // 컨테이너 내부로 제한
+      x = Math.max(0, Math.min(x, bounds.width  - el.offsetWidth));
+      y = Math.max(0, Math.min(y, bounds.height - el.offsetHeight));
+      el.style.left = x + 'px';
+      el.style.top  = y + 'px';
+    });
+
+    el.addEventListener('pointerup', (e)=>{
+      if(!drag || drag.el!==el) return;
+      const moved = Math.hypot(e.clientX-drag.startX, e.clientY-drag.startY);
+      const url = el.dataset.photo || '';
+      drag=null;
+      if(moved < 6 && url){
+        lbImg.src = url;
+        lb.classList.add('open');
+        lb.setAttribute('aria-hidden','false');
+      }
     });
   });
-  closeBtn.addEventListener('click',close);
-  box.addEventListener('click',e=>{if(e.target===box)close();});
-  addEventListener('keydown',e=>{if(e.key==='Escape')close();});
-})();
 
-// 스티커 드래그
-(() => {
-  const area=document.querySelector('.stickers-area');
-  document.querySelectorAll('.draggable').forEach(el=>{
-    let offX=0,offY=0,drag=false;
-    const down=(x,y)=>{drag=true;const r=el.getBoundingClientRect();offX=x-r.left;offY=y-r.top;};
-    const move=(x,y)=>{
-      if(!drag)return;
-      const a=area.getBoundingClientRect();
-      let nx=x-a.left-offX, ny=y-a.top-offY;
-      nx=Math.max(0,Math.min(a.width-el.offsetWidth,nx));
-      ny=Math.max(0,Math.min(a.height-el.offsetHeight,ny));
-      el.style.left=nx+'px'; el.style.top=ny+'px'; el.dataset.dragging='1';
-    };
-    const up=()=>{drag=false;setTimeout(()=>el.dataset.dragging='0',0);};
-    el.addEventListener('mousedown',e=>{down(e.clientX,e.clientY);});
-    window.addEventListener('mousemove',e=>move(e.clientX,e.clientY));
-    window.addEventListener('mouseup',up);
-    el.addEventListener('touchstart',e=>{const t=e.touches[0];if(t)down(t.clientX,t.clientY);});
-    window.addEventListener('touchmove',e=>{const t=e.touches[0];if(t)move(t.clientX,t.clientY);});
-    window.addEventListener('touchend',up);
+  lbClose.addEventListener('click', ()=>{
+    lb.classList.remove('open'); lb.setAttribute('aria-hidden','true'); lbImg.src='';
+  });
+  lb.addEventListener('click', (e)=>{
+    if(e.target===lb){ lb.classList.remove('open'); lb.setAttribute('aria-hidden','true'); lbImg.src=''; }
+  });
+  addEventListener('keydown', (e)=>{
+    if(e.key==='Escape' && lb.classList.contains('open')){
+      lb.classList.remove('open'); lb.setAttribute('aria-hidden','true'); lbImg.src='';
+    }
   });
 })();
+
+/* 접시 텍스트 -> 하얀 메모 모달 */
+(()=>{
+  const trigger = document.getElementById('plateText');
+  const modal   = document.getElementById('noteModal');
+  const copy    = document.getElementById('noteCopy');
+  const close   = modal.querySelector('.note-close');
+
+  const text = trigger.textContent.trim();
+
+  trigger.addEventListener('click', ()=>{
+    copy.textContent = text;
+    modal.classList.add('open');
+    modal.setAttribute('aria-hidden','false');
+  });
+
+  close.addEventListener('click', ()=>{
+    modal.classList.remove('open');
+    modal.setAttribute('aria-hidden','true');
+  });
+
+  modal.addEventListener('click', (e)=>{
+    if(e.target===modal){
+      modal.classList.remove('open');
+      modal.setAttribute('aria-hidden','true');
+    }
+  });
+
+  addEventListener('keydown', (e)=>{
+    if(e.key==='Escape' && modal.classList.contains('open')){
+      modal.classList.remove('open');
+      modal.setAttribute('aria-hidden','true');
+    }
+  });
+})();
+

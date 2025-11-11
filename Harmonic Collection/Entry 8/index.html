@@ -3,57 +3,64 @@
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Week 8 - Joyful / Grateful / Enchanted</title>
-  <link href="https://fonts.googleapis.com/css2?family=Fasthand&family=Great+Vibes&display=swap" rel="stylesheet"/>
-  <link rel="stylesheet" href="./style.css?v=10"/>
+  <title>Harmonic Collection – Entry 8</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Fasthand&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./style.css?v=31"/>
 </head>
 <body>
   <canvas id="stars" aria-hidden="true"></canvas>
 
   <main class="page">
-    <h1 class="sr-only">Week 8</h1>
+    <!-- 1) 키워드 + 스티커 (스티커는 이 섹션 안에서만 이동) -->
+    <section class="hero fullbleed" id="top">
+      <h1 class="word w-joyful">
+        <a href="https://www.dictionary.com/browse/joyful" target="_blank" rel="noopener">Joyful</a>
+      </h1>
+      <h1 class="word w-grateful">
+        <a href="https://www.dictionary.com/browse/grateful" target="_blank" rel="noopener">Grateful</a>
+      </h1>
+      <h1 class="word w-enchanted">
+        <a href="https://www.dictionary.com/browse/enchanted" target="_blank" rel="noopener">Enchanted</a>
+      </h1>
 
-    <!-- 상단 감정 단어 -->
-    <section class="feelings">
-      <span class="word w1">Joyful</span>
-      <span class="word w2">Grateful</span>
-      <span class="word w3">Enchanted</span>
+      <!-- hero 안에 배치된 드래그 스티커 3개 (2개는 라이트박스 열림, 1개는 동작 없음) -->
+      <button class="sticker" data-photo="https://i.imgur.com/FfHaz0N.jpeg" style="left: 12vw; bottom: 24px;" aria-label="sticker cat 1"></button>
+      <button class="sticker" data-photo="https://i.imgur.com/YOkrKkn.jpeg" style="left: 46vw; bottom: 24px;" aria-label="sticker cat 2"></button>
+      <button class="sticker" data-photo=""                          style="left: 78vw; bottom: 24px;" aria-label="sticker cat 3 (no action)"></button>
+
+      <a class="scroll-down" href="#plate">▼</a>
     </section>
 
-    <!-- 고양이 스티커 - 드래그 가능 -->
-    <section class="stickers-area">
-      <button class="cat-sticker draggable" style="left:10%; top:45%;" data-img="https://i.imgur.com/FfHaz0N.jpeg">
-        <img src="https://i.pinimg.com/1200x/3e/4f/b1/3e4fb11fe4f2de733667182ed7158e19.jpg" alt="cat sticker"/>
-      </button>
-
-      <button class="cat-sticker draggable" style="left:48%; top:14%; transform: rotate(10deg);" data-img="https://i.imgur.com/YOkrKkn.jpeg">
-        <img src="https://i.pinimg.com/1200x/3e/4f/b1/3e4fb11fe4f2de733667182ed7158e19.jpg" alt="cat sticker"/>
-      </button>
-
-      <button class="cat-sticker draggable" style="right:12%; top:36%; transform: rotate(-12deg);">
-        <img src="https://i.pinimg.com/1200x/3e/4f/b1/3e4fb11fe4f2de733667182ed7158e19.jpg" alt="cat sticker"/>
-      </button>
-    </section>
-
-    <!-- 접시 섹션 -->
-    <section class="plate-section fullbleed">
+    <!-- 2) 접시 섹션 -->
+    <section id="plate" class="plate-section fullbleed">
       <div class="plate-viewport">
-        <img class="plate" src="https://i.pinimg.com/736x/8c/00/6d/8c006d8a9dc0e6ecb16e31fc2d24a60d.jpg" alt="silver plate"/>
-        <div class="plate-text">
-          It is so fascinating to see all the Halloween decorations on the streets. Some of them look so real that I actually got scared.
-          Watching all those decorations makes me feel like I’m really in New York. And Bryant Park’s ice rink as well!
-          It was so exciting to be on the ice rink I had only seen in photos. I know I will remember these moments for a long time.
-        </div>
+        <img class="plate" alt="silver plate"
+             src="https://i.pinimg.com/736x/8c/00/6d/8c006d8a9dc0e6ecb16e31fc2d24a60d.jpg"/>
+
+        <button id="plateText" class="plate-text" type="button">
+It is so fascinating to see all the Halloween decorations on the streets. Some of them look so real that I actually got scared.
+Watching all those decorations makes me feel like I’m really in New York. And Bryant Park’s ice rink as well!
+It was so exciting to be on the ice rink I had only seen in photos. I know I will remember these moments for a long time.
+        </button>
       </div>
     </section>
   </main>
 
-  <!-- 라이트박스 -->
-  <div id="lightbox" class="lightbox">
-    <button class="close">×</button>
-    <img alt="photo preview"/>
+  <!-- 사진 라이트박스 -->
+  <div id="lightbox" class="lightbox" aria-hidden="true">
+    <button class="close" aria-label="close">×</button>
+    <img class="lightbox-img" alt="preview"/>
   </div>
 
-  <script defer src="./script.js?v=10"></script>
+  <!-- 하얀 메모 모달(제목 제거) -->
+  <div id="noteModal" class="note-modal" aria-hidden="true">
+    <div class="note-card" role="dialog" aria-modal="true">
+      <button class="note-close" aria-label="close">×</button>
+      <p id="noteCopy"></p>
+    </div>
+  </div>
+
+  <script defer src="./script.js?v=31"></script>
 </body>
 </html>
