@@ -41,7 +41,7 @@ body {
   animation: jitter 0.25s infinite;
 }
 
-/* 이미지 */
+
 .photo {
   position: relative;
   width: min(700px, 80vw);
@@ -55,7 +55,7 @@ body {
   transition: opacity 0.3s ease;
 }
 
-/* 오버레이 */
+
 .overlay {
   position: absolute;
   inset: 0;
@@ -85,13 +85,13 @@ body {
   margin: 0;
 }
 
-/* hover 시 */
+
 .photo:hover img { opacity: 0; }
 .photo:hover .overlay {
   opacity: 1;
   pointer-events: auto;
 }
 
-/* 모바일 클릭 토글용 */
+
 .photo.is-open img { opacity: 0; }
 .photo.is-open .overlay { opacity: 1; pointer-events: auto; }

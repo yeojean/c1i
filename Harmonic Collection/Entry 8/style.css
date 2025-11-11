@@ -1,0 +1,107 @@
+@font-face{
+  font-family: "Erotica";
+  src: url("./fonts/erotica.woff2") format("woff2");
+  font-display: swap;
+}
+
+:root{
+  --ink:#ffffff;
+  --bg1:#0a0d12;
+  --bg2:#05070a;
+}
+
+html,body{
+  height:100%;
+  margin:0; padding:0;
+  background: radial-gradient(120% 120% at 50% 10%, var(--bg1) 0%, var(--bg2) 70%);
+  color:var(--ink);
+  font-family:"Erotica","Great Vibes",cursive;
+  overflow-x:hidden;
+
+  cursor:url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="22" height="22"><polygon points="11,0 14,8 22,11 14,14 11,22 8,14 0,11 8,8" fill="white"/></svg>') 11 11, auto;
+}
+
+#stars{ position:fixed; inset:0; width:100%; height:100%; z-index:0; display:block; }
+
+.page{ position:relative; z-index:1; max-width:1400px; margin:0 auto; }
+
+.sr-only{ position:absolute; left:-9999px; width:1px; height:1px; overflow:hidden; }
+
+.feelings{ position:relative; height:min(60vh,700px); padding: clamp(40px,6vw,80px) clamp(20px,5vw,60px); }
+.word{
+  position:absolute; white-space:nowrap;
+  color:#fff; text-shadow:0 2px 0 rgba(0,0,0,.2);
+  line-height:1; letter-spacing:.02em;
+  font-size:clamp(48px, 12vw, 180px);
+}
+.w1{ left:5%; top:7%; transform:rotate(-18deg) skewX(-6deg); }
+.w2{ left:50%; top:27%; transform:translateX(-25%) rotate(-18deg) skewX(-6deg); font-size:clamp(60px,14.5vw,210px); }
+.w3{ right:5%; bottom:6%; transform:rotate(-18deg) skewX(-6deg); }
+
+.stickers-area{ position:relative; height:220px; margin:10px auto 40px; max-width:1100px; }
+.cat-sticker{
+  position:absolute; width:92px; height:92px; border:none; background:transparent; padding:0; cursor:grab;
+  filter: drop-shadow(0 8px 18px rgba(0,0,0,.45));
+}
+.cat-sticker:active{ cursor:grabbing; }
+.cat-sticker img{ width:100%; height:100%; object-fit:cover; border-radius:50%; }
+
+.fullbleed{
+  width:100vw;
+  margin-left:calc(50% - 50vw);
+  margin-right:calc(50% - 50vw);
+}
+
+.plate-section{
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0;
+}
+.plate-viewport{
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  background: #000;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.plate{
+  width: auto;
+  height: min(84vh, 860px);
+  max-width: 95vw;
+  object-fit: contain;
+  display: block;
+}
+
+.plate-text{
+  position: absolute;
+  left: 50%; top: 50%;
+  transform: translate(-50%, -50%);
+  width: min(34ch, 30vw);
+  text-align: center;
+  color: #0b0b0b;
+  font-family: 'Fasthand', cursive;
+  font-size: clamp(14px, 1.6vw, 18px);
+  line-height: 1.85;
+  opacity: 1;
+  text-shadow: 0 0 0.5px rgba(0,0,0,.35);
+  pointer-events: none;
+}
+
+.lightbox{
+  position:fixed; inset:0; display:none; place-items:center; background:rgba(0,0,0,.8); z-index:99;
+}
+.lightbox.open{ display:grid; }
+.lightbox img{
+  max-width:min(92vw,1100px); max-height:86vh; border-radius:12px; box-shadow:0 20px 60px rgba(0,0,0,.6);
+}
+.lightbox .close{
+  position:absolute; top:18px; right:18px; width:40px; height:40px;
+  border:none; cursor:pointer; font-size:28px;
+  background:rgba(255,255,255,.9); color:#000;
+}
