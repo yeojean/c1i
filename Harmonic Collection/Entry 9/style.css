@@ -1,0 +1,157 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+}
+
+body {
+  overflow-y: scroll;
+  scroll-snap-type: y mandatory;
+  font-family: Avenir, -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+}
+
+.panel {
+  height: 100vh;
+  scroll-snap-align: start;
+  position: relative;
+}
+
+.panel-1 {
+  background-color: #f7f0e8;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+.wrapper {
+  width: 100%;
+  height: 100%;
+  padding-right: 8vw;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  position: relative;
+  z-index: 2;
+}
+
+.text-box {
+  background-color: rgba(255, 244, 240, 0.9);
+  padding: 32px 42px;
+  max-width: 420px;
+  border: none;
+  cursor: pointer;
+}
+
+.text-box p {
+  font-size: 22px;
+  line-height: 1.28;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #1d1c1b;
+  margin: 0;
+}
+
+.emotion-box {
+  position: absolute;
+  left: 12vw;
+  bottom: 18vh;
+  max-width: 260px;
+  padding: 22px 28px;
+  background-color: #3b261b;
+  color: #ffe9de;
+  border: none;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.5s ease;
+}
+
+.emotion-box p {
+  font-family: "Courier New", Courier, monospace;
+  font-size: 18px;
+  line-height: 1.5;
+  letter-spacing: 0.14em;
+  text-transform: lowercase;
+  margin: 0;
+}
+
+.emotion-box.visible {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.sticker-container {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+  overflow: hidden;
+}
+
+.sticker {
+  position: absolute;
+  top: -150px;
+  will-change: transform;
+  animation-name: fallFloat;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  opacity: 1;
+}
+
+@keyframes fallFloat {
+  0% {
+    transform: translate3d(0, -120vh, 0) rotate(0deg);
+  }
+  50% {
+    transform: translate3d(30px, 10vh, 0) rotate(10deg);
+  }
+  100% {
+    transform: translate3d(-40px, 120vh, 0) rotate(30deg);
+  }
+}
+
+.panel-2 {
+  position: relative;
+  background: #000;
+  color: #fff;
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+}
+
+#p5-holder {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+
+#p5-holder canvas {
+  width: 100% !important;
+  height: 100% !important;
+  display: block;
+}
+
+.typewriter-container {
+  position: absolute;
+  top: 40px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 70vw;
+  z-index: 10;
+}
+
+#typewriter {
+  font-family: "Courier New", Courier, monospace;
+  font-size: 14px;
+  line-height: 1.6;
+  letter-spacing: 0.12em;
+  text-align: center;
+  white-space: pre-line;
+  color: #ffffff;
+}
