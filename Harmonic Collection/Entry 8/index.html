@@ -12,7 +12,6 @@
   <canvas id="stars" aria-hidden="true"></canvas>
 
   <main class="page">
-    <!-- 1) 키워드 + 스티커 (스티커는 이 섹션 안에서만 이동) -->
     <section class="hero fullbleed" id="top">
       <h1 class="word w-joyful">
         <a href="https://www.dictionary.com/browse/joyful" target="_blank" rel="noopener">Joyful</a>
@@ -24,7 +23,6 @@
         <a href="https://www.dictionary.com/browse/enchanted" target="_blank" rel="noopener">Enchanted</a>
       </h1>
 
-      <!-- hero 안에 배치된 드래그 스티커 3개 (2개는 라이트박스 열림, 1개는 동작 없음) -->
       <button class="sticker" data-photo="https://i.imgur.com/FfHaz0N.jpeg" style="left: 12vw; bottom: 24px;" aria-label="sticker cat 1"></button>
       <button class="sticker" data-photo="https://i.imgur.com/YOkrKkn.jpeg" style="left: 46vw; bottom: 24px;" aria-label="sticker cat 2"></button>
       <button class="sticker" data-photo=""                          style="left: 78vw; bottom: 24px;" aria-label="sticker cat 3 (no action)"></button>
@@ -47,13 +45,11 @@ It was so exciting to be on the ice rink I had only seen in photos. I know I wil
     </section>
   </main>
 
-  <!-- 사진 라이트박스 -->
   <div id="lightbox" class="lightbox" aria-hidden="true">
     <button class="close" aria-label="close">×</button>
     <img class="lightbox-img" alt="preview"/>
   </div>
 
-  <!-- 하얀 메모 모달(제목 제거) -->
   <div id="noteModal" class="note-modal" aria-hidden="true">
     <div class="note-card" role="dialog" aria-modal="true">
       <button class="note-close" aria-label="close">×</button>
