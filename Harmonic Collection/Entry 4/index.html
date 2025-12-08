@@ -1,38 +1,40 @@
-!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Week 4 - Flexbox</title>
-    <link href="style.css" rel="stylesheet">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Week 4</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet" />
 </head>
 <body>
-    <h1>Week 4</h1>
-    
-    <div class="mood-container">
-        <div class="mood-card">
-            <div class="mood-title">Exhausted</div>
-            <div class="synonyms-container">
-                <div class="synonym">Tired</div>
-                <div class="synonym">Drained</div>
-                <div class="synonym">Worn out</div>
-                <div class="synonym">Fatigued</div>
-                <div class="synonym">Depleted</div>
-                <div class="synonym">Weary</div>
-            </div>
-        </div>
+  <div class="page">
+    <div class="grid-wrapper">
+      <div class="color-grid">
+        <!-- 1행 -->
+        <div class="square" data-word="Exhausted" data-link="https://www.merriam-webster.com/dictionary/exhausted"></div>
+        <div class="square" data-word="Tired" data-link="https://www.merriam-webster.com/dictionary/tired"></div>
+        <div class="square" data-word="Drained" data-link="https://www.merriam-webster.com/dictionary/drained"></div>
+        <!-- 2행 -->
+        <div class="square" data-word="Worn out" data-link="https://www.merriam-webster.com/dictionary/worn-out"></div>
+        <div class="square" data-word="Fatigued" data-link="https://www.merriam-webster.com/dictionary/fatigued"></div>
+        <div class="square" data-word="Depleted" data-link="https://www.merriam-webster.com/dictionary/depleted"></div>
+        <!-- 3행 -->
+        <div class="square" data-word="Weary" data-link="https://www.merriam-webster.com/dictionary/weary"></div>
+        <div class="square" data-word="Worried" data-link="https://www.merriam-webster.com/dictionary/worried"></div>
+        <div class="square" data-word="Anxious" data-link="https://www.merriam-webster.com/dictionary/anxious"></div>
+      </div>
 
-        <div class="mood-card">
-            <div class="mood-title">Worried</div>
-            <div class="synonyms-container">
-                <div class="synonym">Anxious</div>
-                <div class="synonym">Concerned</div>
-                <div class="synonym">Nervous</div>
-                <div class="synonym">Uneasy</div>
-                <div class="synonym">Troubled</div>
-                <div class="synonym">Apprehensive</div>
-            </div>
-        </div>
+      <div class="word-display" id="wordDisplay">
+        <!-- 클릭하면 여기 안에 단어 링크가 생김 -->
+      </div>
     </div>
+  </div>
+
+  <div class="bottom-bar"></div>
+
+  <script src="script.js"></script>
 </body>
 </html>
