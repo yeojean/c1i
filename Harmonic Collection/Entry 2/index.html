@@ -1,48 +1,42 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Week 2</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600;700&display=swap" rel="stylesheet">
-    <style>
-        body {
-            background-color: #c3fcf1;
-            margin: 0;
-            padding: 20px;
-            font-family: 'Quicksand', sans-serif;
-            color: #00BFFF;
-        }
-
-        h1, h2, p {
-            color: #00BFFF;
-        }
-
-        a {
-            color: #00BFFF;
-            text-decoration: none;
-            font-weight: 600;
-        }
-
-        a:hover {
-            text-decoration: underline;
-        }
-
-        img {
-            max-width: 100%;
-            height: auto;
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <title>Harmonic Collection - Entry 2</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Londrina+Sketch&display=swap" rel="stylesheet" />
 </head>
 <body>
-    <h1>Week 2</h1>
-    <h2>9/6</h2>
-    <h2>Today's Mood: Satisfied</h2>
-    <p>I liked my outfit</p>
-    <img src="https://blob.gifcities.org/gifcities/3ALJSRYSEBVFSFLFRR3BJXHDOPJHMHRN.gif" alt="mood gif">
-    <br><br>
-    <a href="https://www.youtube.com/watch?v=HAQ-DT-vw5c" target="_blank">Playlist for the mood</a>
+  <div class="page">
+    <div class="image-wrapper">
+      <img
+        src="https://betsymae.com/cdn/shop/files/16797459520403394586_2048.jpg?v=1754171212"
+        alt="Painting of a tiara with the text Most Evil Bitch"
+        class="main-image"
+      />
+    </div>
+
+    <div class="text-and-player">
+      <div id="typewriter" class="typing-text"></div>
+
+      <div class="player">
+        <button class="player-btn prev" aria-label="Previous" disabled>
+          <span class="square-icon"></span>
+        </button>
+
+        <button class="player-btn play" aria-label="Play playlist">
+          <span class="triangle-icon"></span>
+        </button>
+
+        <button class="player-btn next" aria-label="Next" disabled>
+          <span class="square-icon"></span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
 </body>
 </html>
