@@ -1,0 +1,115 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: #ffffff;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.page {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.burst-wrapper {
+  position: relative;
+  width: 80vw;
+  max-width: 1100px;
+  aspect-ratio: 16 / 9;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.burst {
+  position: relative;
+  width: 120%;
+  height: auto;
+  aspect-ratio: 3 / 1.6;
+  background-image: url("https://m.media-amazon.com/images/I/61JnYd9F9wL._AC_SL1500_.jpg");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+.burst-text {
+  text-align: center;
+  color: #ffffff;
+  font-size: clamp(5.8rem, 7vw, 7rem);
+  line-height: 1.1;
+}
+
+
+.mood-bubble {
+  position: absolute;
+  width: 165px;
+  height: 165px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 1.5rem;
+  color: #000000;
+
+  opacity: 0;
+  transform: scale(0.6);
+  transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+.bubble-1 { top: 8%; left: -5%; }
+.bubble-2 { top: 8%; right: -5%; }
+.bubble-3 { bottom: 2%; left: -3%; }
+.bubble-4 { bottom: 2%; right: -3%; }
+
+.mood-bubble.visible {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.bubble-1 {
+  border-radius: 50%;
+  background-color: #fff16b;
+}
+
+.bubble-2 {
+  border-radius: 50%;
+  background-color: #9fd8ff;
+}
+
+.bubble-3 {
+  background-color: #ffc36b;
+  border-radius: 0;
+}
+
+.bubble-4::before {
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 0;
+  border-left: 80px solid transparent;
+  border-right: 80px solid transparent;
+  border-bottom: 135px solid #a7ffd4;
+  top: 0px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.bubble-4 span {
+  position: relative;
+  z-index: 1;
+}
