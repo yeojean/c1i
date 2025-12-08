@@ -11,23 +11,20 @@ body {
   min-height: 100vh;
 }
 
-/* 전체 페이지 레이아웃 */
 .page {
   min-height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
-  padding-bottom: 30px; /* 아래 검은 바랑 살짝 간격 */
+  padding-bottom: 30px; 
 }
 
-/* 그리드 감싸는 영역 */
 .grid-wrapper {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
-/* 3x3 색 네모 그리드 */
 .color-grid {
   display: grid;
   grid-template-columns: repeat(3, 90px);
@@ -35,43 +32,40 @@ body {
   gap: 28px;
 }
 
-/* 기본 네모 스타일 */
 .square {
   width: 90px;
   height: 90px;
   cursor: pointer;
 }
 
-/* 각 네모 색 지정 (위에서부터 순서대로) */
 .square:nth-child(1) {
-  background-color: #f44336; /* 밝은 레드 */
+  background-color: #f44336; 
 }
 .square:nth-child(2) {
-  background-color: #6b0703; /* 짙은 레드브라운 */
+  background-color: #6b0703; 
 }
 .square:nth-child(3) {
-  background-color: #000000; /* 블랙 */
+  background-color: #000000; 
 }
 .square:nth-child(4) {
-  background-color: #ffe478; /* 라이트 옐로우 */
+  background-color: #ffe478; 
 }
 .square:nth-child(5) {
-  background-color: #b48322; /* 머스타드 브라운 */
+  background-color: #b48322; 
 }
 .square:nth-child(6) {
-  background-color: #190000; /* 아주 짙은 브라운/블랙 */
+  background-color: #190000; 
 }
 .square:nth-child(7) {
-  background-color: #89ecff; /* 라이트 블루 */
+  background-color: #89ecff; 
 }
 .square:nth-child(8) {
-  background-color: #2e6ea3; /* 블루 */
+  background-color: #2e6ea3; 
 }
 .square:nth-child(9) {
-  background-color: #050000; /* 거의 블랙 */
+  background-color: #050000; 
 }
 
-/* 단어 표시 영역 */
 .word-display {
   margin-top: 40px;
   min-height: 40px;
@@ -91,7 +85,7 @@ body {
   opacity: 0.7;
 }
 
-/* 아래 검은 바 */
+
 .bottom-bar {
   position: fixed;
   left: 0;
@@ -101,7 +95,7 @@ body {
   background-color: #111111;
 }
 
-/* 반응형 살짝 조정 */
+
 @media (max-width: 600px) {
   .color-grid {
     grid-template-columns: repeat(3, 70px);
